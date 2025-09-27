@@ -7,10 +7,7 @@ from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 from textblob import TextBlob
 import nltk
-import os
 import sys
-
-os.environ['PYSPARK_PYTHON'] = sys.executable
 
 @st.cache_resource
 def initial_setup():
@@ -33,6 +30,7 @@ def get_spark_session():
         SparkSession.builder
         .appName("StreamlitPySparkApp")
         .master("local[*]")
+        .config("spark.pyspark.python", sys.executable)
         .getOrCreate()
     )
 
