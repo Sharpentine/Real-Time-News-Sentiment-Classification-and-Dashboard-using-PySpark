@@ -6,6 +6,16 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 from textblob import TextBlob
+import nltk
+
+@st.cache_resource
+def initial_setup():
+    try:
+        nltk.download('punkt')
+    except Exception as e:
+        st.error(f"Error during NLTK download: {e}")
+
+initial_setup()
 
 st.set_page_config(
     page_title="News Sentiment Dashboard (with PySpark)",
