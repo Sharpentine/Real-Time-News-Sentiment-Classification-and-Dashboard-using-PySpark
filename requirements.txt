@@ -3,4 +3,5 @@ pyspark
 textblob
 requests
 pandas
+nltk
 altair
