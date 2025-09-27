@@ -7,6 +7,10 @@ from pyspark.sql.functions import udf
 from pyspark.sql.types import StringType
 from textblob import TextBlob
 import nltk
+import os
+import sys
+
+os.environ['PYSPARK_PYTHON'] = sys.executable
 
 @st.cache_resource
 def initial_setup():
